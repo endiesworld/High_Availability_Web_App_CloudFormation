@@ -1,0 +1,10 @@
+Description: >
+    Emmanuel Okoro / Udacity
+    
+    Ref: https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1/blob/master/supporting_material/servers.yml
+Parameters:
+
+    EnvironmentName:
+        Description: Prefix the name EmmanuelOkoroCloudDevOpsUdacityProject_2 to resource names
+        Type: String
+Resources:
