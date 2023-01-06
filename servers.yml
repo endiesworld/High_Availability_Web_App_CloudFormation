@@ -99,6 +99,7 @@ Resources:
         Ref: WebAppLB
       Port: '80'
       Protocol: HTTP
+
   ALBListenerRule:
       Type: AWS::ElasticLoadBalancingV2::ListenerRule
       Properties:
@@ -110,6 +111,7 @@ Resources:
           Values: [/]
         ListenerArn: !Ref 'Listener'
         Priority: 1
+
   WebAppTargetGroup:
     Type: AWS::ElasticLoadBalancingV2::TargetGroup
     Properties:
@@ -124,3 +126,22 @@ Resources:
       VpcId: 
         Fn::ImportValue:
           Fn::Sub: "${EnvironmentName}-VPCID"
+
+Outputs:
+  WebAppTargetGroup: 
+    Description: Webserver target group for ALP
+    Export:
+      Name: !Sub ${AWS::StackName}-WebAppTargetGroup
+    Value: !Ref WebAppTargetGroup
+
+  ApplicationLoadBalancerDnsName: 
+    Description: Application load balancer DNS name
+    Export:
+      Name: !Sub ${AWS::StackName}-ApplicationLoadBalancerDnsName
+    Value: !GetAtt ApplicationLoadBalancer.DNSName
+
+  ApplicationLoadBalancerZoneID: 
+    Description: Application load balancer hosted zone ID
+    Export:
+      Name: !Sub ${AWS::StackName}-ApplicationLoadBalancerZoneID
+    Value: !GetAtt ApplicationLoadBalancer.CanonicalHostedZoneID
