@@ -137,11 +137,11 @@ Outputs:
   ApplicationLoadBalancerDnsName: 
     Description: Application load balancer DNS name
     Export:
-      Name: !Sub ${AWS::StackName}-ApplicationLoadBalancerDnsName
-    Value: !GetAtt ApplicationLoadBalancer.DNSName
+      Name: !Sub ${AWS::StackName}-WebAppLBDnsName
+    Value: !GetAtt WebAppLB.DNSName
 
   ApplicationLoadBalancerZoneID: 
     Description: Application load balancer hosted zone ID
     Export:
-      Name: !Sub ${AWS::StackName}-ApplicationLoadBalancerZoneID
-    Value: !GetAtt ApplicationLoadBalancer.CanonicalHostedZoneID
+      Name: !Sub ${AWS::StackName}-WebAppLBZoneID
+    Value: !GetAtt WebAppLB.CanonicalHostedZoneID
